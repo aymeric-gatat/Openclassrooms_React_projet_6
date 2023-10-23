@@ -11,7 +11,6 @@ async function getPhotographers() {
 
     // Analyse les données JSON de la réponse
     const data = await response.json();
-    console.log(data.photographers);
     // Retourne les photographes sous forme d'objet
     return data;
   } catch (error) {
@@ -23,10 +22,11 @@ async function getPhotographers() {
 // Cette fonction asynchrone affiche les données des photographes sur la page web
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
-
+  var index = 0;
   // Itère sur chaque photographe et crée un modèle de carte pour l'afficher sur la page
   photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
+    index++;
+    const photographerModel = photographerTemplate(photographer, index);
     const userCardDOM = photographerModel.getUserCardDOM();
 
     // Ajoute la carte de l'utilisateur à la section des photographes

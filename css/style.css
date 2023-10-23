@@ -42,9 +42,67 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    /*======= */
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
 }
 
 .photographer_section article img {
     height: 200px;
+    width: 310px;
+    object-position: 50% 50%;
+    object-fit: cover;
+    margin: 0;
+}
+
+/* ============================================ */
+
+.photographer_section article .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.photographer_section article a {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.photographer_section article a:focus {
+    outline: 2px solid #901C1C;
+}
+
+.photographer_section article p {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.photographer_section article p span {
+    font-size: 13px;
+    margin: 0;
+}
+
+.photographer_section article p span:nth-child(1) {
+    color: #901C1C;
+    font-weight: 400;
+    padding: 1px 0;
+}
+
+.photographer_section article p span:nth-child(3) {
+    font-size: 12px;
 }
