@@ -74,3 +74,335 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+/** ================= **/
+
+.photograph-header {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 316px;
+    padding: 50px 56px;
+    background-color: #fafafa;
+}
+
+.photograph-header .portrait-box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    fill: #C4C4C4;
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.25));
+}
+
+.photograph-header .portrait-box img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 526px;
+    max-height: 358px;
+    flex-shrink: 0;
+    object-fit: contain;
+    object-position: center;
+}
+
+.photograph-header h1,
+.photograph-header p {
+    font-family: DM Sans;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.photograph-header h1 {
+    font-size: 64px;
+    line-height: 83px;
+}
+
+.photograph-header .localisation {
+    color: #901C1C;
+    font-size: 24px;
+    line-height: 31px;
+    margin-bottom: 19px;
+}
+
+.photograph-header .tagline {
+    color: #525252;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.photograph-header .contact_button:focus {
+    outline: 2px solid #2a2a2a;
+}
+
+/** ======================================================= **/
+
+.gallery-section {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 100px;
+}
+
+.gallery-section .sort {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: start;
+    gap: 25px;
+}
+
+.gallery-section .sort p,
+.gallery-section .sort #sort-btn {
+    font-family: DM Sans;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000;
+}
+
+.gallery-section .sort #sort-btn {
+    position: relative;
+    background-color: #901C1C;
+    color: #fff;
+    height: 56px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 0px 23px;
+}
+
+.gallery-section .sort #sort-btn::backdrop {
+    background-color: yellow;
+}
+
+.gallery-section .sort #sort-btn option {
+    outline: none;
+    padding: 20px 23px;
+    border-radius: 0;
+    border-bottom: 2px solid #fff;
+}
+
+.gallery-section .sort #sort-btn option:last-child {
+    border-bottom: none;
+}
+
+.gallery-section .gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: start;
+    gap: 20px;
+    padding: 50px 0;
+}
+
+.gallery-section .gallery div {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.gallery-section .gallery img,
+.gallery-section .gallery video {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.gallery-section .gallery .description-photo {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.gallery-section .gallery .description-photo p {
+    font-family: DM Sans;
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 10px 0;
+    max-width: 75%;
+    overflow-wrap: break-word;
+}
+
+.gallery-section .gallery .description-photo .like {
+    cursor: pointer;
+    user-select: none;
+}
+
+/** ======================================== **/
+
+.container-bottom {
+    box-sizing: border-box;
+    width: 376px;
+    height: 89px;
+    position: fixed;
+    bottom: -13px;
+    right: 36px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    background: #DB8876;
+    border-radius: 5px;
+    padding: 21px 31px;
+}
+
+.container-bottom p {
+    font-family: DM Sans;
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: right;
+}
+
+/* ============================================= */
+
+#contact_modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: #0000009a;
+    backdrop-filter: blur(3px);
+}
+
+.modal {
+    margin-top: 30px;
+    max-width: 599px;
+    height: max-content;
+    padding: 15px 35px;
+}
+
+#contact_modal .modal header {
+    margin: 15px 0;
+}
+
+#contact_modal .modal h2 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: left;
+}
+
+#contact_modal .modal .input label {
+    font-size: 20px;
+    color: white;
+}
+
+#contact_modal .modal .input input {
+    border-radius: 5px;
+    background: #FFF;
+    max-height: 46px;
+}
+
+#contact_modal .modal textarea {
+    width: 100%;
+    max-height: 120px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #FFF;
+}
+
+#contact_modal .modal .contact_button {
+    padding: 10px 25px;
+}
+
+/* ============================================= */
+
+.modal-carousel {
+    position: fixed;
+    display: none;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    top: 0%;
+    left: 0%;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff9d;
+    backdrop-filter: blur(2px);
+    margin: 0;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.container-carousel {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+.container-carousel img,
+.container-carousel video {
+    object-fit: contain;
+    height: 80%;
+    margin: 0;
+}
+
+.container-carousel p,
+.modal-carousel a {
+    font-family: DM Sans;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #901C1C;
+    margin: 0;
+}
+
+.container-carousel p {
+    width: 100%;
+    padding: 15px 0;
+}
+
+.modal-carousel a {
+    width: 96px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.modal-carousel .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    font-weight: 700;
+    width: 42px;
+    height: 42px;
+    color: #901C1C;
+    border: none;
+    background: none;
+}

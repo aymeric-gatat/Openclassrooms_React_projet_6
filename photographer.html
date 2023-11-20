@@ -1,37 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="/">
+      <img src="assets/images/logo.png" class="logo" tabindex="1" alt="Fisheye Home page" />
+    </a>
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <button class="contact_button" onclick="displayModal()" tabindex="2">Contactez-moi</button>
+    </div>
+    <section class="gallery-section">
+      <div class="sort">
+        <p>Trier par :</p>
+        <select name="sort" id="sort-btn">
+          <option value="popularité">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+      <div class="gallery"></div>
+      <div class="modal-carousel">
+        <button class="close-btn">X</button>
+        <a title="Previous image" id="prev">&lt;</a>
+        <div class="container-carousel"></div>
+        <a title="Next image" id="next">&gt;</a>
+      </div>
+    </section>
+  </main>
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi<br><span id="name-contact"></span>
+        </h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form>
+        <div class="input">
+          <label for="firstname">Prénom</label>
+          <input type="text" name="firstname" id="firstname" />
+        </div>
+        <div class="input">
+          <label for="lastname">Nom</label>
+          <input type="text" name="lastname" id="lastname" />
+        </div>
+        <div class="input">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div class="input">
+          <label for="message">Votre message</label>
+          <textarea name="message" id="message" cols="50" rows="20"></textarea>
+        </div>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <script src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+</body>
+
 </html>
