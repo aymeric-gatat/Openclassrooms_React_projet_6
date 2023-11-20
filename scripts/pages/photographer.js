@@ -104,7 +104,7 @@ function createCarouselElement(data, author) {
 }
 
 function showImage(data, author, index) {
-  imageIndex = index;
+  let imageIndex = index;
 
   const initialMediaElement = createCarouselElement(data[imageIndex], author);
 
@@ -159,7 +159,6 @@ function handleLinkClick(media, data, author) {
   sortAction(value, result);
   const startIndex = result.findIndex((item) => item === media);
   removeGallery(container);
-  console.log(media);
   showImage(result, author, startIndex);
 }
 
@@ -191,13 +190,13 @@ function getMedia(data) {
           const namePhoto = document.createElement("p");
           namePhoto.innerText = media.title;
 
+          // Mis en place des likes
           const like = document.createElement("span");
           like.innerText = media.likes;
           const heart = document.createElement("span");
           heart.innerText = ` ♥️`;
 
           const likeContainer = document.createElement("p");
-          //
           const likeParse = media;
 
           likeContainer.appendChild(like);
@@ -222,7 +221,7 @@ function getMedia(data) {
               likes.innerText = `${numberLikes} ♥️`;
             }
           });
-
+          // Mis en place des medias
           const photoElement = media.image !== undefined ? document.createElement("img") : document.createElement("video");
 
           photoElement.setAttribute("alt", media.title);
