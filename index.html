@@ -11,16 +11,18 @@
 
 <body>
   <header role="banner">
-    <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
-    </a>
+    <nav>
+      <a href="index.html" aria-label="Accueil" tabindex="1">
+        <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
+      </a>
+    </nav>
     <h1>Nos photographes</h1>
   </header>
   <main id="main" role="main">
-    <div class="photographer_section"></div>
+    <section class="photographer_section" aria-live="polite" aria-atomic="true"></section>
   </main>
-  <script src="scripts/templates/photographer.js"></script>
-  <script src="scripts/pages/index.js" type="module"></script>
+  <script src="scripts/templates/photographer.js" aria-hidden="true"></script>
+  <script src="scripts/pages/index.js" type="module" aria-hidden="true"></script>
 </body>
 
 </html>

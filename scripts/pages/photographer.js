@@ -23,6 +23,26 @@ likes.classList.add("footer-add");
 // Variable pour compter les images dans la galerie
 let imageIndex = 0;
 
+const body = document.querySelector("body");
+const main = document.querySelector("main");
+
+// ======= Ouverture et Fermeture des modals ======== //
+function onOpenModal(btnClose, modal) {
+  main.setAttribute("aria-hidden", "true");
+  modal.setAttribute("aria-hidden", "false");
+  body.classList.add("no-scroll");
+  modal.style.display = "flex";
+  btnClose.focus();
+}
+
+function onCloseModal(btnOpen, modal) {
+  main.setAttribute("aria-hidden", "false");
+  modal.setAttribute("aria-hidden", "true");
+  body.classList.remove("no-scroll");
+  modal.style.display = "none";
+  btnOpen.focus();
+}
+
 // Fonction pour convertir les dates des médias
 function convertDatesToNewDate(objects) {
   for (const object of objects) {
@@ -196,7 +216,8 @@ function getMedia(data) {
           const heart = document.createElement("span");
           heart.innerText = ` ♥️`;
 
-          const likeContainer = document.createElement("p");
+          const likeContainer = document.createElement("a");
+          likeContainer.setAttribute("tabindex", 0);
           const likeParse = media;
 
           likeContainer.appendChild(like);
@@ -206,7 +227,7 @@ function getMedia(data) {
           likes.innerText = `${numberLikes} ♥️`;
           containerBottom.appendChild(likes);
 
-          likeContainer.addEventListener("click", () => {
+          const likeMedia = () => {
             if (!likeParse.postLiker) {
               likeParse.likes += 1;
               likeParse.postLiker = true;
@@ -220,12 +241,26 @@ function getMedia(data) {
               numberLikes -= 1;
               likes.innerText = `${numberLikes} ♥️`;
             }
+          };
+          // Avec la souris
+          likeContainer.addEventListener("click", () => {
+            likeMedia();
+          });
+          // Avec le clavier
+          likeContainer.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.keyCode === 13) {
+              likeMedia();
+            }
           });
           // Mis en place des medias
+          const photoContainer = document.createElement("a");
+          photoContainer.classList.add("media");
+          photoContainer.setAttribute("tabindex", 0);
+          photoContainer.setAttribute("href", `#${media.id}`);
+
           const photoElement = media.image !== undefined ? document.createElement("img") : document.createElement("video");
 
           photoElement.setAttribute("alt", media.title);
-          photoElement.setAttribute("tabindex", imageIndex);
 
           if (media.image !== undefined) {
             photoElement.src = `/assets/photographers/${name[0]}/${media.image}`;
@@ -235,16 +270,16 @@ function getMedia(data) {
             photoElement.controls = false;
           }
 
-          photoElement.addEventListener("click", () => {
+          photoContainer.addEventListener("click", () => {
             const nametest = name[0];
             handleLinkClick(media, data, nametest);
-            bigContainer.style.display = "flex";
-            bigContainer.focus();
+            onOpenModal(photoContainer, bigContainer);
           });
 
           footerPhoto.appendChild(namePhoto);
           footerPhoto.appendChild(likeContainer);
-          link.appendChild(photoElement);
+          photoContainer.appendChild(photoElement);
+          link.appendChild(photoContainer);
           link.appendChild(footerPhoto);
           gallery.appendChild(link);
 
@@ -293,5 +328,27 @@ getData(photographeUrl);
 
 const closeBtnCarousel = document.querySelector(".close-btn");
 closeBtnCarousel.addEventListener("click", () => {
-  bigContainer.style.display = "none";
+  onCloseModal(closeBtnCarousel, bigContainer);
+});
+
+// Accessibilité modal
+
+const contactForm = document.querySelector("#contact_modal");
+const btnCloseContact = document.querySelector(".btn-close");
+
+function focusModal(btn, modal, btnClose) {
+  btn.addEventListener("click", () => {
+    onOpenModal(btnClose, modal);
+  });
+}
+
+focusModal(contactBtn, contactForm, btnCloseContact);
+
+btnCloseContact.addEventListener("click", () => {
+  onCloseModal(contactBtn, contactForm);
+});
+
+const mediaSelect = document.querySelectorAll(".media");
+mediaSelect.forEach((media) => {
+  focusModal(media, bigContainer);
 });

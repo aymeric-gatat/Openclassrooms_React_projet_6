@@ -52,7 +52,7 @@ form {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    box-sizing: border-box;
 }
 
 form label {
@@ -158,7 +158,7 @@ form input {
     gap: 25px;
 }
 
-.gallery-section .sort p,
+.gallery-section .sort label,
 .gallery-section .sort #sort-btn {
     font-family: DM Sans;
     font-size: 18px;
@@ -210,6 +210,10 @@ form input {
     flex-flow: column nowrap;
 }
 
+.gallery-section .gallery .media {
+    width: fit-content;
+}
+
 .gallery-section .gallery img,
 .gallery-section .gallery video {
     width: 350px;
@@ -217,6 +221,7 @@ form input {
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
+    user-select: none;
 }
 
 
@@ -228,7 +233,8 @@ form input {
     width: 350px;
 }
 
-.gallery-section .gallery .description-photo p {
+.gallery-section .gallery .description-photo p,
+.gallery-section .gallery .description-photo a {
     font-family: DM Sans;
     color: #901C1C;
     font-size: 24px;
@@ -283,8 +289,7 @@ form input {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    background: #0000009a;
-    backdrop-filter: blur(3px);
+    background: #fff;
 }
 
 .modal {
@@ -325,6 +330,26 @@ form input {
 
 #contact_modal .modal .contact_button {
     padding: 10px 25px;
+}
+
+.modal button {
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+*:focus {
+    outline: 3px solid #1C1C90 !important;
+}
+
+.modal form fieldset {
+    width: calc(100%-13px);
+    border: none;
+}
+
+.modal form button {
+    background: #901C1C;
 }
 
 /* ============================================= */
@@ -405,4 +430,11 @@ form input {
     color: #901C1C;
     border: none;
     background: none;
+}
+
+
+/* ============================================= */
+
+.no-scroll {
+    overflow: hidden;
 }

@@ -21,6 +21,12 @@ h1 {
 
 .logo {
     height: 50px;
+}
+
+header a {
+    display: block;
+    width: fit-content;
+    height: 50px;
     margin-left: 100px;
 }
 
@@ -28,7 +34,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px 0;
 }
 
 .photographer_section article {

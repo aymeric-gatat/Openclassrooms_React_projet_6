@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -11,60 +11,78 @@
 
 <body>
   <header>
-    <a href="/">
-      <img src="assets/images/logo.png" class="logo" tabindex="1" alt="Fisheye Home page" />
-    </a>
+    <!-- Utilisation de la balise <nav> pour indiquer la navigation -->
+    <nav>
+      <a href="/" tabindex="1" aria-label="Accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      </a>
+    </nav>
   </header>
+
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()" tabindex="2">Contactez-moi</button>
+      <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
+      <button class="contact_button" onclick="displayModal()" tabindex="2" aria-label="Contactez le photographe">Contactez-moi</button>
     </div>
+
     <section class="gallery-section">
       <div class="sort">
-        <p>Trier par :</p>
-        <select name="sort" id="sort-btn">
+        <!-- Utilisation de la balise <label> pour lier l'étiquette au menu déroulant -->
+        <label for="sort-btn">Trier par :</label>
+        <select name="sort" id="sort-btn" aria-label="Options de tri">
           <option value="popularité">Popularité</option>
           <option value="date">Date</option>
           <option value="title">Titre</option>
         </select>
       </div>
-      <div class="gallery"></div>
-      <div class="modal-carousel">
-        <button class="close-btn">X</button>
-        <a title="Previous image" id="prev">&lt;</a>
-        <div class="container-carousel"></div>
-        <a title="Next image" id="next">&gt;</a>
+
+      <div class="gallery" role="region" aria-label="Galerie d'images"></div>
+
+      <div class="modal-carousel" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription" tabindex="-1" aria-hidden="true">
+        <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
+        <button class="close-btn" aria-label="Fermer">X</button>
+        <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
+        <span id="prev" aria-label="Image précédente">&lt;</span>
+        <div class="container-carousel" role="group" aria-roledescription="carrousel"></div>
+        <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
+        <span id="next" aria-label="Image suivante">&gt;</span>
       </div>
     </section>
   </main>
-  <div id="contact_modal">
-    <div class="modal">
+
+  <div id="contact_modal" role="dialog" aria-labelledby="contactModalTitle" aria-describedby="contactModalDescription" tabindex="-1">
+    <div class="modal" role="document">
       <header>
-        <h2>Contactez-moi<br><span id="name-contact"></span>
-        </h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <h2 id="contactModalTitle">Contactez-moi<br><span id="name-contact"></span></h2>
+        <button aria-label="Fermer" class="btn-close">
+          <img src="assets/icons/close.svg" alt="Fermer" />
+        </button>
       </header>
-      <form>
-        <div class="input">
-          <label for="firstname">Prénom</label>
-          <input type="text" name="firstname" id="firstname" />
-        </div>
-        <div class="input">
-          <label for="lastname">Nom</label>
-          <input type="text" name="lastname" id="lastname" />
-        </div>
-        <div class="input">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" />
-        </div>
-        <div class="input">
-          <label for="message">Votre message</label>
-          <textarea name="message" id="message" cols="50" rows="20"></textarea>
-        </div>
-        <button class="contact_button">Envoyer</button>
+      <form aria-label="Formulaire de contact" role="form">
+        <!-- Ajout d'un groupe de champs pour améliorer la sémantique -->
+        <fieldset>
+          <div class="input">
+            <label for="firstname">Prénom</label>
+            <input type="text" name="firstname" id="firstname" />
+          </div>
+          <div class="input">
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" />
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" autocomplete="address-line3" />
+          </div>
+          <div class="input">
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" cols="50" rows="20" aria-label="Votre message"></textarea>
+          </div>
+        </fieldset>
+        <button class="contact_button" aria-label="Envoyer le message" type="submit">Envoyer</button>
       </form>
     </div>
   </div>
+
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
