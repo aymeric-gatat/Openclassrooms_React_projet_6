@@ -2,9 +2,10 @@
 <html lang="fr">
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
+  <meta name="description" content="">
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <title>Fisheye - photographe </title>
 </head>
@@ -13,8 +14,8 @@
   <header>
     <!-- Utilisation de la balise <nav> pour indiquer la navigation -->
     <nav>
-      <a href="/" tabindex="1" aria-label="Accueil">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      <a href="/" tabindex="1" aria-label="Accueil" title="Retour a la home page de Fisheye">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page">
       </a>
     </nav>
   </header>
@@ -38,14 +39,14 @@
 
       <div class="gallery" role="region" aria-label="Galerie d'images"></div>
 
-      <div class="modal-carousel" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription" tabindex="-1" aria-hidden="true">
+      <div class="modal-carousel" role="dialog" tabindex="-1" aria-hidden="true">
         <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
         <button class="close-btn" aria-label="Fermer">X</button>
         <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
-        <span id="prev" aria-label="Image précédente">&lt;</span>
+        <button id="prev" aria-label="Image précédente" class="btn-carousel">&lt;</button>
         <div class="container-carousel" role="group" aria-roledescription="carrousel"></div>
         <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
-        <span id="next" aria-label="Image suivante">&gt;</span>
+        <button id="next" aria-label="Image suivante" class="btn-carousel">&gt;</button>
       </div>
     </section>
   </main>
@@ -55,10 +56,10 @@
       <header>
         <h2 id="contactModalTitle">Contactez-moi<br><span id="name-contact"></span></h2>
         <button aria-label="Fermer" class="btn-close">
-          <img src="assets/icons/close.svg" alt="Fermer" />
+          <img src="assets/icons/close.svg" alt="Fermer" title="Fermer" />
         </button>
       </header>
-      <form aria-label="Formulaire de contact" role="form">
+      <form aria-label="Formulaire de contact">
         <!-- Ajout d'un groupe de champs pour améliorer la sémantique -->
         <fieldset>
           <div class="input">
@@ -71,7 +72,7 @@
           </div>
           <div class="input">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" autocomplete="address-line3" />
+            <input type="email" name="email" id="email" />
           </div>
           <div class="input">
             <label for="message">Votre message</label>

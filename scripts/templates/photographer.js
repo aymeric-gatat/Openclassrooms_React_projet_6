@@ -5,7 +5,6 @@ function photographerTemplate(data, index) {
   function getUserCardDOM() {
     //Content
     const article = document.createElement("article");
-    article.setAttribute("role", "photographe");
     const link = document.createElement("a");
     link.setAttribute("tabindex", index);
     link.href = "/photographer.html?id=" + id;

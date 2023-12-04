@@ -15,6 +15,7 @@ const bigContainer = document.querySelector(".modal-carousel");
 const container = document.querySelector(".container-carousel");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
+const btnCloseCarousel = document.querySelector(".close-btn");
 // Bandeau Bottom
 var containerBottom = document.createElement("div");
 containerBottom.classList.add("container-bottom");
@@ -32,6 +33,7 @@ function onOpenModal(btnClose, modal) {
   modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   modal.style.display = "flex";
+  console.log("ok");
   btnClose.focus();
 }
 
@@ -41,6 +43,12 @@ function onCloseModal(btnOpen, modal) {
   body.classList.remove("no-scroll");
   modal.style.display = "none";
   btnOpen.focus();
+}
+
+function focusModal(btn, modal, btnClose) {
+  btn.addEventListener("click", () => {
+    onOpenModal(btnClose, modal);
+  });
 }
 
 // Fonction pour convertir les dates des médias
@@ -79,6 +87,10 @@ function sortAction(value, result) {
 
 // Création du profil du photographe
 function createProfil(data) {
+  const logo = document.querySelector("body > header > nav > a > img");
+  logo.setAttribute("alt", `Fisheye - Profil de ${data.name}`);
+  logo.setAttribute("title", `Fisheye - Profil de ${data.name}`);
+
   const name = document.createElement("h1");
   name.innerText = data.name;
 
@@ -93,6 +105,7 @@ function createProfil(data) {
   const portrait = document.createElement("img");
   portrait.src = `/assets/photographers/Photographers_ID_Photos/${data.portrait}`;
   portrait.setAttribute("alt", data.name);
+  portrait.setAttribute("title", data.name);
 
   const portraitBox = document.createElement("div");
   portraitBox.classList.add("portrait-box");
@@ -116,7 +129,6 @@ function createCarouselElement(data, author) {
     mediaElement.alt = data.title;
   } else if (mediaElement.tagName == "VIDEO") {
     mediaElement.src = `/assets/photographers/${author}/${data.video}`;
-    mediaElement.alt = data.title;
     mediaElement.controls = true;
   }
 
@@ -162,6 +174,40 @@ function showImage(data, author, index) {
       container.appendChild(mediaElementTitle);
     }
   });
+
+  function navigateCarousel(event) {
+    let mediaElement;
+    switch (event.key) {
+      case "ArrowLeft":
+        imageIndex = (imageIndex - 1 + data.length) % data.length;
+        console.log(imageIndex);
+        container.innerHTML = "";
+        mediaElement = createCarouselElement(data[imageIndex], author);
+        if (mediaElement) {
+          container.appendChild(mediaElement);
+
+          const mediaElementTitle = document.createElement("p");
+          mediaElementTitle.innerText = data[imageIndex].title;
+          container.appendChild(mediaElementTitle);
+        }
+        break;
+      case "ArrowRight":
+        imageIndex = (imageIndex + 1) % data.length;
+        console.log(imageIndex);
+        container.innerHTML = "";
+        mediaElement = createCarouselElement(data[imageIndex], author);
+        if (mediaElement) {
+          container.appendChild(mediaElement);
+          const mediaElementTitle = document.createElement("p");
+          mediaElementTitle.innerText = data[imageIndex].title;
+          container.appendChild(mediaElementTitle);
+        }
+        break;
+      default:
+        return;
+    }
+  }
+  document.addEventListener("keydown", navigateCarousel);
   return;
 }
 
@@ -185,11 +231,13 @@ function handleLinkClick(media, data, author) {
 // Récupération des médias
 function getMedia(data) {
   const photographer = data.photographers.find((p) => p.id == photographerId);
+  document.title = `Fisheye - ${photographer.name}`;
+  document.querySelector('meta[name="description"]').content = `Découvrez le profil de ${photographer.name}, originaire de ${photographer.city}.`;
 
   if (photographer) {
     createProfil(photographer);
     const name = photographer.name.split(" ");
-    nameModalContact.innerText = photographer.name;
+    nameModalContact.innerText = ` ${photographer.name}`;
     let numberLikes = 0;
 
     const dataMedia = data.media.filter((media) => media.photographerId == photographerId);
@@ -223,6 +271,7 @@ function getMedia(data) {
           likeContainer.appendChild(like);
           likeContainer.appendChild(heart);
           likeContainer.classList.add("like");
+          likes.setAttribute("aria-label", "likes");
 
           likes.innerText = `${numberLikes} ♥️`;
           containerBottom.appendChild(likes);
@@ -257,13 +306,14 @@ function getMedia(data) {
           photoContainer.classList.add("media");
           photoContainer.setAttribute("tabindex", 0);
           photoContainer.setAttribute("href", `#${media.id}`);
+          photoContainer.setAttribute("title", media.title);
 
           const photoElement = media.image !== undefined ? document.createElement("img") : document.createElement("video");
 
-          photoElement.setAttribute("alt", media.title);
-
           if (media.image !== undefined) {
             photoElement.src = `/assets/photographers/${name[0]}/${media.image}`;
+            photoElement.setAttribute("alt", media.title);
+            photoElement.setAttribute("title", media.title);
           } else if (media.video !== undefined) {
             photoElement.src = `/assets/photographers/${name[0]}/${media.video}`;
             photoElement.setAttribute("type", "video/mp4");
@@ -273,7 +323,7 @@ function getMedia(data) {
           photoContainer.addEventListener("click", () => {
             const nametest = name[0];
             handleLinkClick(media, data, nametest);
-            onOpenModal(photoContainer, bigContainer);
+            onOpenModal(btnCloseCarousel, bigContainer);
           });
 
           footerPhoto.appendChild(namePhoto);
@@ -336,17 +386,11 @@ closeBtnCarousel.addEventListener("click", () => {
 const contactForm = document.querySelector("#contact_modal");
 const btnCloseContact = document.querySelector(".btn-close");
 
-function focusModal(btn, modal, btnClose) {
-  btn.addEventListener("click", () => {
-    onOpenModal(btnClose, modal);
-  });
-}
-
 focusModal(contactBtn, contactForm, btnCloseContact);
-
 btnCloseContact.addEventListener("click", () => {
   onCloseModal(contactBtn, contactForm);
 });
+//
 
 const mediaSelect = document.querySelectorAll(".media");
 mediaSelect.forEach((media) => {
