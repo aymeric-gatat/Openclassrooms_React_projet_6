@@ -112,7 +112,7 @@ form input {
 
 .photograph-header h1,
 .photograph-header p {
-    font-family: DM Sans;
+    font-family: "DM Sans";
     font-weight: 400;
     letter-spacing: 0em;
     text-align: left;
@@ -235,7 +235,7 @@ form input {
     width: 350px;
 }
 
-.gallery-section .gallery .description-photo p,
+.gallery-section .gallery .description-photo label,
 .gallery-section .gallery .description-photo a {
     font-family: DM Sans;
     color: #901C1C;
@@ -346,7 +346,7 @@ form input {
 }
 
 .modal form fieldset {
-    width: calc(100%-13px);
+    width: calc(100% - 13px);
     border: none;
 }
 

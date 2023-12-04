@@ -17,7 +17,7 @@ const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const btnCloseCarousel = document.querySelector(".close-btn");
 // Bandeau Bottom
-var containerBottom = document.createElement("div");
+const containerBottom = document.createElement("div");
 containerBottom.classList.add("container-bottom");
 const likes = document.createElement("p");
 likes.classList.add("footer-add");
@@ -28,15 +28,17 @@ const body = document.querySelector("body");
 const main = document.querySelector("main");
 
 // ======= Ouverture et Fermeture des modals ======== //
+
+// Fonction pour ouvrir la modal
 function onOpenModal(btnClose, modal) {
   main.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   modal.style.display = "flex";
-  console.log("ok");
   btnClose.focus();
 }
 
+// Fonction pour fermer la modal
 function onCloseModal(btnOpen, modal) {
   main.setAttribute("aria-hidden", "false");
   modal.setAttribute("aria-hidden", "true");
@@ -45,6 +47,7 @@ function onCloseModal(btnOpen, modal) {
   btnOpen.focus();
 }
 
+// Fonction pour mettre le focus sur la modal
 function focusModal(btn, modal, btnClose) {
   btn.addEventListener("click", () => {
     onOpenModal(btnClose, modal);
@@ -59,22 +62,18 @@ function convertDatesToNewDate(objects) {
 }
 
 // Fonction pour trier par nom
-function sortByName(liste) {
-  return liste.sort((a, b) => a.title.localeCompare(b.title));
-}
+const sortByName = (liste) => liste.sort((a, b) => a.title.localeCompare(b.title));
 
 // Fonction pour trier par nombre de likes
-function sortByLike(liste) {
-  return liste.sort((a, b) => b.likes - a.likes);
-}
+const sortByLike = (liste) => liste.sort((a, b) => b.likes - a.likes);
 
 // Fonction pour trier par date
-function sortByDate(array) {
+const sortByDate = (array) => {
   convertDatesToNewDate(array);
   return array.sort((a, b) => b.date - a.date);
-}
+};
 
-// Function pour affectuer le tri
+// Fonction pour effectuer le tri
 function sortAction(value, result) {
   if (value === "popularité") {
     sortByLike(result);
@@ -120,7 +119,7 @@ function createProfil(data) {
   section.appendChild(portraitBox);
 }
 
-//
+// Fonction pour créer un élément de carousel
 function createCarouselElement(data, author) {
   const mediaElement = data.image !== undefined ? document.createElement("img") : data.video !== undefined ? document.createElement("video") : null;
 
@@ -135,6 +134,7 @@ function createCarouselElement(data, author) {
   return mediaElement;
 }
 
+// Fonction pour afficher une image dans le carousel
 function showImage(data, author, index) {
   let imageIndex = index;
 
@@ -150,7 +150,6 @@ function showImage(data, author, index) {
 
   prevBtn.addEventListener("click", () => {
     imageIndex = (imageIndex - 1 + data.length) % data.length;
-    console.log(imageIndex);
     container.innerHTML = "";
     const mediaElement = createCarouselElement(data[imageIndex], author);
     if (mediaElement) {
@@ -164,7 +163,6 @@ function showImage(data, author, index) {
 
   nextBtn.addEventListener("click", () => {
     imageIndex = (imageIndex + 1) % data.length;
-    console.log(imageIndex);
     container.innerHTML = "";
     const mediaElement = createCarouselElement(data[imageIndex], author);
     if (mediaElement) {
@@ -180,12 +178,10 @@ function showImage(data, author, index) {
     switch (event.key) {
       case "ArrowLeft":
         imageIndex = (imageIndex - 1 + data.length) % data.length;
-        console.log(imageIndex);
         container.innerHTML = "";
         mediaElement = createCarouselElement(data[imageIndex], author);
         if (mediaElement) {
           container.appendChild(mediaElement);
-
           const mediaElementTitle = document.createElement("p");
           mediaElementTitle.innerText = data[imageIndex].title;
           container.appendChild(mediaElementTitle);
@@ -193,7 +189,6 @@ function showImage(data, author, index) {
         break;
       case "ArrowRight":
         imageIndex = (imageIndex + 1) % data.length;
-        console.log(imageIndex);
         container.innerHTML = "";
         mediaElement = createCarouselElement(data[imageIndex], author);
         if (mediaElement) {
@@ -211,15 +206,15 @@ function showImage(data, author, index) {
   return;
 }
 
+// Fonction pour vider un élément parent de ses enfants
 function removeGallery(parentElement) {
   while (parentElement.firstChild) {
     parentElement.removeChild(parentElement.firstChild);
   }
 }
-//
 
+// Fonction pour gérer le clic sur un lien de la galerie
 function handleLinkClick(media, data, author) {
-  // Utilisez la data associée à la div .link
   const value = sortBtn.value;
   const result = [...data];
   sortAction(value, result);
@@ -255,8 +250,9 @@ function getMedia(data) {
           const footerPhoto = document.createElement("div");
           footerPhoto.classList.add("description-photo");
 
-          const namePhoto = document.createElement("p");
+          const namePhoto = document.createElement("label");
           namePhoto.innerText = media.title;
+          namePhoto.setAttribute("for", `media${media.id}`);
 
           // Mis en place des likes
           const like = document.createElement("span");
@@ -271,7 +267,6 @@ function getMedia(data) {
           likeContainer.appendChild(like);
           likeContainer.appendChild(heart);
           likeContainer.classList.add("like");
-          likes.setAttribute("aria-label", "likes");
 
           likes.innerText = `${numberLikes} ♥️`;
           containerBottom.appendChild(likes);
@@ -309,6 +304,7 @@ function getMedia(data) {
           photoContainer.setAttribute("title", media.title);
 
           const photoElement = media.image !== undefined ? document.createElement("img") : document.createElement("video");
+          photoElement.setAttribute("id", `media${media.id}`);
 
           if (media.image !== undefined) {
             photoElement.src = `/assets/photographers/${name[0]}/${media.image}`;
@@ -316,7 +312,6 @@ function getMedia(data) {
             photoElement.setAttribute("title", media.title);
           } else if (media.video !== undefined) {
             photoElement.src = `/assets/photographers/${name[0]}/${media.video}`;
-            photoElement.setAttribute("type", "video/mp4");
             photoElement.controls = false;
           }
 
@@ -359,6 +354,7 @@ function getMedia(data) {
   }
 }
 
+// Fonction asynchrone pour récupérer les données JSON
 async function getData(url) {
   try {
     const response = await fetch(url);
@@ -374,8 +370,10 @@ async function getData(url) {
   }
 }
 
+// Appel de la fonction pour récupérer les données
 getData(photographeUrl);
 
+// Ajout d'un gestionnaire d'événement pour fermer le carousel
 const closeBtnCarousel = document.querySelector(".close-btn");
 closeBtnCarousel.addEventListener("click", () => {
   onCloseModal(closeBtnCarousel, bigContainer);
@@ -383,16 +381,30 @@ closeBtnCarousel.addEventListener("click", () => {
 
 // Accessibilité modal
 
+// Sélection des éléments pour la modal de contact
 const contactForm = document.querySelector("#contact_modal");
 const btnCloseContact = document.querySelector(".btn-close");
 
+// Focus sur la modal de contact
 focusModal(contactBtn, contactForm, btnCloseContact);
+
+// Gestion de la fermeture de la modal de contact
 btnCloseContact.addEventListener("click", () => {
   onCloseModal(contactBtn, contactForm);
 });
-//
 
+// Ajout du focus sur les éléments de la galerie
 const mediaSelect = document.querySelectorAll(".media");
 mediaSelect.forEach((media) => {
   focusModal(media, bigContainer);
+});
+
+// Ajout d'un event listener pour la touche "Escape"
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && contactForm.style.display == "flex") {
+    onCloseModal(contactBtn, contactForm);
+  }
+  if (event.key === "Escape" && bigContainer.style.display == "flex") {
+    onCloseModal(closeBtnCarousel, bigContainer);
+  }
 });

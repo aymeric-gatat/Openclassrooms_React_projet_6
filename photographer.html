@@ -26,7 +26,7 @@
       <button class="contact_button" onclick="displayModal()" tabindex="2" aria-label="Contactez le photographe">Contactez-moi</button>
     </div>
 
-    <section class="gallery-section">
+    <div class="gallery-section" role="region" aria-label="Galerie d'images">
       <div class="sort">
         <!-- Utilisation de la balise <label> pour lier l'étiquette au menu déroulant -->
         <label for="sort-btn">Trier par :</label>
@@ -44,14 +44,14 @@
         <button class="close-btn" aria-label="Fermer">X</button>
         <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
         <button id="prev" aria-label="Image précédente" class="btn-carousel">&lt;</button>
-        <div class="container-carousel" role="group" aria-roledescription="carrousel"></div>
+        <div class="container-carousel" role="region" aria-label="Carrousel d'images"></div>
         <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
         <button id="next" aria-label="Image suivante" class="btn-carousel">&gt;</button>
       </div>
-    </section>
+    </div>
   </main>
 
-  <div id="contact_modal" role="dialog" aria-labelledby="contactModalTitle" aria-describedby="contactModalDescription" tabindex="-1">
+  <div id="contact_modal" role="dialog" tabindex="-1">
     <div class="modal" role="document">
       <header>
         <h2 id="contactModalTitle">Contactez-moi<br><span id="name-contact"></span></h2>
