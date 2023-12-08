@@ -1,12 +1,13 @@
 // Récupération de l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(document.location.search);
 const photographerId = urlParams.get("id");
+const url = "https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/";
 
 // Sélection des éléments du DOM
 const section = document.querySelector(".photograph-header");
 const contactBtn = document.querySelector(".contact_button");
 const sortBtn = document.querySelector("#sort-btn");
-const photographeUrl = "https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/data/photographers.json";
+const photographeUrl = url + "data/photographers.json";
 const nameModalContact = document.querySelector("#name-contact");
 
 // Éléments du carousel
@@ -102,7 +103,7 @@ function createProfil(data) {
   bio.innerText = data.tagline;
 
   const portrait = document.createElement("img");
-  portrait.src = `/assets/photographers/Photographers_ID_Photos/${data.portrait}`;
+  portrait.src = url + `/assets/photographers/Photographers_ID_Photos/${data.portrait}`;
   portrait.setAttribute("alt", data.name);
   portrait.setAttribute("title", data.name);
 
@@ -124,10 +125,10 @@ function createCarouselElement(data, author) {
   const mediaElement = data.image !== undefined ? document.createElement("img") : data.video !== undefined ? document.createElement("video") : null;
 
   if (mediaElement.tagName == "IMG") {
-    mediaElement.src = `/assets/photographers/${author}/${data.image}`;
+    mediaElement.src = url + `/assets/photographers/${author}/${data.image}`;
     mediaElement.alt = data.title;
   } else if (mediaElement.tagName == "VIDEO") {
-    mediaElement.src = `/assets/photographers/${author}/${data.video}`;
+    mediaElement.src = url + `/assets/photographers/${author}/${data.video}`;
     mediaElement.controls = true;
   }
 
