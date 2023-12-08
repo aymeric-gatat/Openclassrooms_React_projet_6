@@ -308,11 +308,11 @@ function getMedia(data) {
           photoElement.setAttribute("id", `media${media.id}`);
 
           if (media.image !== undefined) {
-            photoElement.src = `/assets/photographers/${name[0]}/${media.image}`;
+            photoElement.src = url + `/assets/photographers/${name[0]}/${media.image}`;
             photoElement.setAttribute("alt", media.title);
             photoElement.setAttribute("title", media.title);
           } else if (media.video !== undefined) {
-            photoElement.src = `/assets/photographers/${name[0]}/${media.video}`;
+            photoElement.src = url + `/assets/photographers/${name[0]}/${media.video}`;
             photoElement.controls = false;
           }
 
