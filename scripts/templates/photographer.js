@@ -14,7 +14,7 @@ function photographerTemplate(data, index) {
     imgContainer.className = "img-container";
     const img = document.createElement("img");
     img.setAttribute("src", picture);
-    img.setAttribute("alt", "photo de " + name);
+    img.setAttribute("alt", "photo de photographe");
     //Name
     const h2 = document.createElement("h2");
     h2.textContent = name;
