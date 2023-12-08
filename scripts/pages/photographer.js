@@ -408,3 +408,27 @@ document.addEventListener("keydown", function (event) {
     onCloseModal(closeBtnCarousel, bigContainer);
   }
 });
+
+// Constructor pour contact
+function Contact(firstname, lastname, email, message) {
+  this.firstname = firstname;
+  this.lastname = lastname;
+  this.email = email;
+  this.message = message;
+}
+
+function handleContact() {
+  const firstname = document.querySelector("#firstname").value;
+  const lastname = document.querySelector("#lastname").value;
+  const email = document.querySelector("#email").value;
+  const message = document.querySelector("#message").value;
+  const newContact = new Contact(firstname, lastname, email, message);
+  console.log(newContact);
+}
+
+const btnSubmitContact = document.querySelector("#contact_modal > div > form > button");
+
+btnSubmitContact.addEventListener("click", (e) => {
+  e.preventDefault();
+  handleContact();
+});
