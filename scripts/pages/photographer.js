@@ -6,7 +6,7 @@ const photographerId = urlParams.get("id");
 const section = document.querySelector(".photograph-header");
 const contactBtn = document.querySelector(".contact_button");
 const sortBtn = document.querySelector("#sort-btn");
-const photographeUrl = "../../data/photographers.json";
+const photographeUrl = "https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/data/photographers.json";
 const nameModalContact = document.querySelector("#name-contact");
 
 // Éléments du carousel

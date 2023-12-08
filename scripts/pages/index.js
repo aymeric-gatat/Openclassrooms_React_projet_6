@@ -2,7 +2,7 @@
 async function getPhotographers() {
   try {
     // Utilise la fonction Fetch pour obtenir les données du fichier JSON
-    const response = await fetch("../../data/photographers.json");
+    const response = await fetch("https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/data/photographers.json");
 
     // Vérifie si la requête a réussi (statut HTTP 200)
     if (!response.ok) {
