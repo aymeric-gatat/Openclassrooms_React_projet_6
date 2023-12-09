@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr"><head>
+  <meta charset="utf-8">
+  <meta name="description" content="Découvrez le profil de Mimi Keel, originaire de London.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/css/style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&amp;display=swap" rel="stylesheet">
+  <title>Fisheye - Mimi Keel</title>
+</head>
+
+<body>
+  <header>
+    <!-- Utilisation de la balise <nav> pour indiquer la navigation -->
+    <nav>
+      <a href="/" tabindex="1" aria-label="Accueil" title="Retour a la home page de Fisheye">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye - Profil de Mimi Keel" title="Fisheye - Profil de Mimi Keel">
+      </a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="photograph-header">
+      <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
+      <div class="profil-card"><h1>Mimi Keel</h1><p class="localisation">London, UK</p><p class="tagline">Voir le beau dans le quotidien</p></div><button class="contact_button" onclick="displayModal()" tabindex="2" aria-label="Contactez le photographe">Contactez-moi</button>
+    <div class="portrait-box"><img src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Photographers_ID_Photos/MimiKeel.jpg" alt="Mimi Keel" title="Mimi Keel"></div></div>
+
+    <div class="gallery-section" role="region" aria-label="Galerie d'images">
+      <div class="sort">
+        <!-- Utilisation de la balise <label> pour lier l'étiquette au menu déroulant -->
+        <label for="sort-btn">Trier par :</label>
+        <select name="sort" id="sort-btn" aria-label="Options de tri">
+          <option value="popularité">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </div>
+
+      <div class="gallery" role="region" aria-label="Galerie d'images"><div class="link"><a class="media" tabindex="0" href="#5234343" title="Wild horses in the mountains"><video id="media5234343" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Animals_Wild_Horses_in_the_mountains.mp4"></video></a><div class="description-photo"><label for="media5234343">Wild horses in the mountains</label><a tabindex="0" class="like"><span>142</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#623534343" title="Lonesome"><img id="media623534343" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Travel_Lonesome.jpg" alt="Lonesome" title="Lonesome"></a><div class="description-photo"><label for="media623534343">Lonesome</label><a tabindex="0" class="like"><span>88</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#625025343" title="Hillside Color"><img id="media625025343" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Travel_HillsideColor.jpg" alt="Hillside Color" title="Hillside Color"></a><div class="description-photo"><label for="media625025343">Hillside Color</label><a tabindex="0" class="like"><span>85</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#23523434" title="Benevides Wedding"><img id="media23523434" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Event_BenevidesWedding.jpg" alt="Benevides Wedding" title="Benevides Wedding"></a><div class="description-photo"><label for="media23523434">Benevides Wedding</label><a tabindex="0" class="like"><span>77</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#2523434634" title="Nora Portrait"><img id="media2523434634" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Portrait_Nora.jpg" alt="Nora Portrait" title="Nora Portrait"></a><div class="description-photo"><label for="media2523434634">Nora Portrait</label><a tabindex="0" class="like"><span>63</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#95234343" title="Rainbow Bird"><img id="media95234343" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Animals_Rainbow.jpg" alt="Rainbow Bird" title="Rainbow Bird"></a><div class="description-photo"><label for="media95234343">Rainbow Bird</label><a tabindex="0" class="like"><span>59</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#398847109" title="Raw Black Portrait"><img id="media398847109" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Portrait_Background.jpg" alt="Raw Black Portrait" title="Raw Black Portrait"></a><div class="description-photo"><label for="media398847109">Raw Black Portrait</label><a tabindex="0" class="like"><span>55</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#65235234" title="Boulder Wedding"><img id="media65235234" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Event_PintoWedding.jpg" alt="Boulder Wedding" title="Boulder Wedding"></a><div class="description-photo"><label for="media65235234">Boulder Wedding</label><a tabindex="0" class="like"><span>52</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#2525345343" title="Wednesday Potrait"><img id="media2525345343" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Portrait_Wednesday.jpg" alt="Wednesday Potrait" title="Wednesday Potrait"></a><div class="description-photo"><label for="media2525345343">Wednesday Potrait</label><a tabindex="0" class="like"><span>34</span><span> ♥️</span></a></div></div><div class="link"><a class="media" tabindex="0" href="#2534342" title="Seaside Wedding"><img id="media2534342" src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6//assets/photographers/Mimi/Event_SeasideWedding.jpg" alt="Seaside Wedding" title="Seaside Wedding"></a><div class="description-photo"><label for="media2534342">Seaside Wedding</label><a tabindex="0" class="like"><span>25</span><span> ♥️</span></a></div></div></div>
+
+      <div class="modal-carousel" role="dialog" tabindex="-1" aria-hidden="true">
+        <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
+        <button class="close-btn" aria-label="Fermer">X</button>
+        <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
+        <button id="prev" aria-label="Image précédente" class="btn-carousel">&lt;</button>
+        <div class="container-carousel" role="region" aria-label="Carrousel d'images"></div>
+        <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
+        <button id="next" aria-label="Image suivante" class="btn-carousel">&gt;</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="contact_modal" role="dialog" tabindex="-1">
+    <div class="modal" role="document">
+      <header>
+        <h2 id="contactModalTitle">Contactez-moi<br><span id="name-contact"> Mimi Keel</span></h2>
+        <button aria-label="Fermer" class="btn-close">
+          <img src="assets/icons/close.svg" alt="Fermer" title="Fermer">
+        </button>
+      </header>
+      <form aria-label="Formulaire de contact">
+        <!-- Ajout d'un groupe de champs pour améliorer la sémantique -->
+        <fieldset>
+          <div class="input">
+            <label for="firstname">Prénom</label>
+            <input type="text" name="firstname" id="firstname">
+          </div>
+          <div class="input">
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname">
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+          </div>
+          <div class="input">
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" cols="50" rows="20" aria-label="Votre message"></textarea>
+          </div>
+        </fieldset>
+        <button class="contact_button" aria-label="Envoyer le message" type="submit">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/scripts/pages/photographer.js"></script>
+  <script src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/scripts/utils/contactForm.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+<div class="container-bottom"><p class="footer-add">680 ♥️</p><p>400€ / jour</p></div></body></html>

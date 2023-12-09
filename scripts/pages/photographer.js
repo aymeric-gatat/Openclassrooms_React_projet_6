@@ -251,9 +251,8 @@ function getMedia(data) {
           const footerPhoto = document.createElement("div");
           footerPhoto.classList.add("description-photo");
 
-          const namePhoto = document.createElement("label");
+          const namePhoto = document.createElement("p");
           namePhoto.innerText = media.title;
-          namePhoto.setAttribute("for", `media${media.id}`);
 
           // Mis en place des likes
           const like = document.createElement("span");
@@ -264,7 +263,6 @@ function getMedia(data) {
           const likeContainer = document.createElement("a");
           likeContainer.setAttribute("tabindex", 0);
           const likeParse = media;
-
           likeContainer.appendChild(like);
           likeContainer.appendChild(heart);
           likeContainer.classList.add("like");
