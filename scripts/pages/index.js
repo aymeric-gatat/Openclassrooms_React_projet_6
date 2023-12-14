@@ -1,3 +1,4 @@
+"use strict";
 // Cette fonction asynchrone est responsable de la récupération des données des photographes depuis un fichier JSON distant.
 async function getPhotographers() {
   try {

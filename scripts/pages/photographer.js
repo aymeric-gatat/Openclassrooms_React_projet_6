@@ -1,3 +1,4 @@
+"use strict";
 // Récupération de l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(document.location.search);
 const photographerId = urlParams.get("id");
@@ -20,8 +21,12 @@ const btnCloseCarousel = document.querySelector(".close-btn");
 // Bandeau Bottom
 const containerBottom = document.createElement("div");
 containerBottom.classList.add("container-bottom");
-const likes = document.createElement("p");
+const likes = document.createElement("figure");
 likes.classList.add("footer-add");
+let likesNumber = document.createElement("p");
+const heart = document.createElement("img");
+heart.src = "../assets/icons/heart.png";
+heart.setAttribute("alt", "likes");
 // Variable pour compter les images dans la galerie
 let imageIndex = 0;
 
@@ -94,7 +99,7 @@ function createProfil(data) {
   const name = document.createElement("h1");
   name.innerText = data.name;
 
-  const localisation = document.createElement("p");
+  const localisation = document.createElement("adress");
   localisation.classList.add("localisation");
   localisation.innerText = `${data.city}, ${data.country}`;
 
@@ -103,14 +108,14 @@ function createProfil(data) {
   bio.innerText = data.tagline;
 
   const portrait = document.createElement("img");
-  portrait.src = url + `/assets/photographers/Photographers_ID_Photos/${data.portrait}`;
+  portrait.src = `assets/photographers/Photographers_ID_Photos/${data.portrait}`;
   portrait.setAttribute("alt", data.name);
   portrait.setAttribute("title", data.name);
 
-  const portraitBox = document.createElement("div");
+  const portraitBox = document.createElement("picture");
   portraitBox.classList.add("portrait-box");
 
-  const profilCard = document.createElement("div");
+  const profilCard = document.createElement("section");
   profilCard.classList.add("profil-card");
   profilCard.appendChild(name);
   profilCard.appendChild(localisation);
@@ -125,10 +130,10 @@ function createCarouselElement(data, author) {
   const mediaElement = data.image !== undefined ? document.createElement("img") : data.video !== undefined ? document.createElement("video") : null;
 
   if (mediaElement.tagName == "IMG") {
-    mediaElement.src = url + `/assets/photographers/${author}/${data.image}`;
+    mediaElement.src = `assets/photographers/${author}/${data.image}`;
     mediaElement.alt = data.title;
   } else if (mediaElement.tagName == "VIDEO") {
-    mediaElement.src = url + `/assets/photographers/${author}/${data.video}`;
+    mediaElement.src = `assets/photographers/${author}/${data.video}`;
     mediaElement.controls = true;
   }
 
@@ -144,7 +149,7 @@ function showImage(data, author, index) {
   if (initialMediaElement) {
     container.appendChild(initialMediaElement);
 
-    const mediaElementTitle = document.createElement("p");
+    const mediaElementTitle = document.createElement("figcaption");
     mediaElementTitle.innerText = data[imageIndex].title;
     container.appendChild(mediaElementTitle);
   }
@@ -156,7 +161,7 @@ function showImage(data, author, index) {
     if (mediaElement) {
       container.appendChild(mediaElement);
 
-      const mediaElementTitle = document.createElement("p");
+      const mediaElementTitle = document.createElement("figcaption");
       mediaElementTitle.innerText = data[imageIndex].title;
       container.appendChild(mediaElementTitle);
     }
@@ -168,7 +173,7 @@ function showImage(data, author, index) {
     const mediaElement = createCarouselElement(data[imageIndex], author);
     if (mediaElement) {
       container.appendChild(mediaElement);
-      const mediaElementTitle = document.createElement("p");
+      const mediaElementTitle = document.createElement("figcaption");
       mediaElementTitle.innerText = data[imageIndex].title;
       container.appendChild(mediaElementTitle);
     }
@@ -183,7 +188,7 @@ function showImage(data, author, index) {
         mediaElement = createCarouselElement(data[imageIndex], author);
         if (mediaElement) {
           container.appendChild(mediaElement);
-          const mediaElementTitle = document.createElement("p");
+          const mediaElementTitle = document.createElement("figcaption");
           mediaElementTitle.innerText = data[imageIndex].title;
           container.appendChild(mediaElementTitle);
         }
@@ -194,7 +199,7 @@ function showImage(data, author, index) {
         mediaElement = createCarouselElement(data[imageIndex], author);
         if (mediaElement) {
           container.appendChild(mediaElement);
-          const mediaElementTitle = document.createElement("p");
+          const mediaElementTitle = document.createElement("figcaption");
           mediaElementTitle.innerText = data[imageIndex].title;
           container.appendChild(mediaElementTitle);
         }
@@ -245,29 +250,34 @@ function getMedia(data) {
         if (media.image || media.video) {
           numberLikes += media.likes;
 
-          const link = document.createElement("div");
+          const link = document.createElement("li");
           link.classList.add("link");
 
-          const footerPhoto = document.createElement("div");
+          const footerPhoto = document.createElement("footer");
           footerPhoto.classList.add("description-photo");
 
           const namePhoto = document.createElement("p");
           namePhoto.innerText = media.title;
 
           // Mis en place des likes
-          const like = document.createElement("span");
+          const like = document.createElement("a");
           like.innerText = media.likes;
-          const heart = document.createElement("span");
-          heart.innerText = ` ♥️`;
+          like.classList.add("like");
+          like.setAttribute("tabindex", 0);
+          like.classList.add("like");
 
-          const likeContainer = document.createElement("a");
-          likeContainer.setAttribute("tabindex", 0);
           const likeParse = media;
-          likeContainer.appendChild(like);
-          likeContainer.appendChild(heart);
-          likeContainer.classList.add("like");
 
-          likes.innerText = `${numberLikes} ♥️`;
+          const heartFooter = document.createElement("img");
+          heartFooter.src = "../assets/icons/heart.png";
+          heartFooter.setAttribute("alt", "likes");
+          like.appendChild(heartFooter);
+
+          likesNumber.innerText = `${numberLikes}`;
+
+          likes.appendChild(likesNumber);
+          likes.appendChild(heart);
+          likes.classList.add("like");
           containerBottom.appendChild(likes);
 
           const likeMedia = () => {
@@ -275,22 +285,28 @@ function getMedia(data) {
               likeParse.likes += 1;
               likeParse.postLiker = true;
               like.innerText = media.likes;
+              like.appendChild(heartFooter);
               numberLikes += 1;
-              likes.innerText = `${numberLikes} ♥️`;
+              likesNumber.innerText = `${numberLikes}`;
+              likes.appendChild(likesNumber);
+              likes.appendChild(heart);
             } else {
               likeParse.likes -= 1;
               likeParse.postLiker = false;
               like.innerText = media.likes;
+              like.appendChild(heartFooter);
               numberLikes -= 1;
-              likes.innerText = `${numberLikes} ♥️`;
+              likesNumber.innerText = `${numberLikes}`;
+              likes.appendChild(likesNumber);
+              likes.appendChild(heart);
             }
           };
           // Avec la souris
-          likeContainer.addEventListener("click", () => {
+          like.addEventListener("click", () => {
             likeMedia();
           });
           // Avec le clavier
-          likeContainer.addEventListener("keydown", (event) => {
+          like.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.keyCode === 13) {
               likeMedia();
             }
@@ -306,7 +322,7 @@ function getMedia(data) {
           photoElement.setAttribute("id", `media${media.id}`);
 
           if (media.image !== undefined) {
-            photoElement.src = url + `/assets/photographers/${name[0]}/${media.image}`;
+            photoElement.src = url + `assets/photographers/${name[0]}/${media.image}`;
             photoElement.setAttribute("alt", media.title);
             photoElement.setAttribute("title", media.title);
           } else if (media.video !== undefined) {
@@ -321,7 +337,7 @@ function getMedia(data) {
           });
 
           footerPhoto.appendChild(namePhoto);
-          footerPhoto.appendChild(likeContainer);
+          footerPhoto.appendChild(like);
           photoContainer.appendChild(photoElement);
           link.appendChild(photoContainer);
           link.appendChild(footerPhoto);
@@ -345,7 +361,7 @@ function getMedia(data) {
       createGallery(result);
     });
 
-    const price = document.createElement("p");
+    const price = document.createElement("b");
     price.innerText = `${photographer.price}€ / jour`;
 
     containerBottom.appendChild(price);

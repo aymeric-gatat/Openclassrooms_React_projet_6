@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link href="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <title>Fisheye - photographe </title>
 </head>
@@ -21,10 +21,10 @@
   </header>
 
   <main id="main">
-    <div class="photograph-header">
+    <header class="photograph-header">
       <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
       <button class="contact_button" onclick="displayModal()" tabindex="2" aria-label="Contactez le photographe">Contactez-moi</button>
-    </div>
+    </header>
 
     <div class="gallery-section" role="region" aria-label="Galerie d'images">
       <div class="sort">
@@ -37,14 +37,14 @@
         </select>
       </div>
 
-      <div class="gallery" role="region" aria-label="Galerie d'images"></div>
+      <ul class="gallery" role="region" aria-label="Galerie d'images"></ul>
 
       <div class="modal-carousel" role="dialog" tabindex="-1" aria-hidden="true">
         <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
         <button class="close-btn" aria-label="Fermer">X</button>
         <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
         <button id="prev" aria-label="Image précédente" class="btn-carousel">&lt;</button>
-        <div class="container-carousel" role="region" aria-label="Carrousel d'images"></div>
+        <figure class="container-carousel" role="region" aria-label="Carrousel d'images"></figure>
         <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
         <button id="next" aria-label="Image suivante" class="btn-carousel">&gt;</button>
       </div>
@@ -84,8 +84,8 @@
     </div>
   </div>
 
-  <script src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/scripts/pages/photographer.js"></script>
-  <script src="https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/scripts/utils/contactForm.js"></script>
+  <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/utils/contactForm.js"></script>
 </body>
 
 </html>

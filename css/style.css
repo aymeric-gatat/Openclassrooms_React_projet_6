@@ -1,5 +1,13 @@
 @import url("photographer.css");
 
+* {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    text-decoration: none;
+    list-style: none;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -31,30 +39,31 @@ header a {
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin: 100px 0;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 80px;
+    margin-bottom: 15px;
 }
 
-.photographer_section article {
+.photographer_section li {
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: calc((100% - 160px) / 3);
 }
 
-.photographer_section article h2 {
+.photographer_section li h2 {
     color: #D3573C;
     font-size: 36px;
-    /*======= */
-    font-weight: 300;
+    font-weight: 400;
+    line-height: 47px;
+    letter-spacing: 0em;
     text-align: center;
-    margin: 0;
 }
 
-.photographer_section article img {
+.photographer_section li img {
     height: 200px;
     width: 310px;
     object-position: 50% 50%;
@@ -64,33 +73,35 @@ header a {
 
 /* ============================================ */
 
-.photographer_section article .img-container {
+.photographer_section li .img-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 80px;
     width: 200px;
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
 }
 
-.photographer_section article a {
+.photographer_section li a {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    width: max-content;
-    height: max-content;
+    width: 100%;
+    height: fit-content;
     text-decoration: none;
     padding: 5px;
     border-radius: 2px;
+    box-sizing: border-box;
 }
 
-.photographer_section article a:focus {
+.photographer_section li a:focus {
     outline: 2px solid #901C1C;
 }
 
-.photographer_section article p {
+.photographer_section li footer {
     display: inline-flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -98,17 +109,28 @@ header a {
     margin: 0;
 }
 
-.photographer_section article p span {
-    font-size: 13px;
+.photographer_section li footer * {
     margin: 0;
-}
-
-.photographer_section article p span:nth-child(1) {
-    color: #901C1C;
+    font-family: DM Sans;
     font-weight: 400;
-    padding: 1px 0;
+    letter-spacing: 0em;
+    text-align: center;
 }
 
-.photographer_section article p span:nth-child(3) {
-    font-size: 12px;
+.photographer_section li footer .localisation {
+    color: #901C1C;
+    padding: 1px 0;
+    font-size: 13px;
+    line-height: 17px;
+}
+
+.photographer_section li footer p {
+    font-size: 10px;
+    line-height: 13px;
+}
+
+.photographer_section li footer b {
+    font-size: 9px;
+    line-height: 12px;
+    color: #757575;
 }

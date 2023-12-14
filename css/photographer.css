@@ -21,31 +21,8 @@
     cursor: pointer;
 }
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
 .modal header img {
     cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
 }
 
 form {
@@ -111,7 +88,8 @@ form input {
 }
 
 .photograph-header h1,
-.photograph-header p {
+.photograph-header .localisation,
+.photograph-header .tagline {
     font-family: "DM Sans";
     font-weight: 400;
     letter-spacing: 0em;
@@ -137,6 +115,7 @@ form input {
     color: #525252;
     font-size: 18px;
     line-height: 23px;
+    margin: 19px 0;
 }
 
 .photograph-header .contact_button:hover {
@@ -200,27 +179,28 @@ form input {
 .gallery-section .gallery {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: start;
     gap: 20px;
     padding: 50px 0;
 }
 
-.gallery-section .gallery div {
-    flex: 1;
+.gallery-section .gallery .link {
     display: flex;
+    width: calc((100% - 40px) / 3);
     flex-flow: column nowrap;
 }
 
-.gallery-section .gallery .media {
-    width: fit-content;
+.gallery-section .gallery .link .media {
+    width: 100%;
 }
 
 .gallery-section .gallery img,
 .gallery-section .gallery video {
-    width: 350px;
+    width: 100%;
     height: 350px;
     object-fit: cover;
+    object-position: top;
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
@@ -229,13 +209,13 @@ form input {
 
 .gallery-section .gallery .description-photo {
     display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
+    flex-flow: row nowrap;
+    align-items: center;
     justify-content: space-between;
-    width: 350px;
+    width: 100%;
 }
 
-.gallery-section .gallery .description-photo label,
+.gallery-section .gallery .description-photo p,
 .gallery-section .gallery .description-photo a {
     font-family: DM Sans;
     color: #901C1C;
@@ -245,13 +225,19 @@ form input {
     letter-spacing: 0em;
     text-align: left;
     margin: 10px 0;
-    max-width: 75%;
     overflow-wrap: break-word;
 }
 
 .gallery-section .gallery .description-photo .like {
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
     user-select: none;
+}
+
+.gallery-section .gallery .description-photo .like img {
+    width: 21px;
+    height: 24px;
 }
 
 /** ======================================== **/
@@ -272,6 +258,7 @@ form input {
     padding: 21px 31px;
 }
 
+.container-bottom b,
 .container-bottom p {
     font-family: DM Sans;
     color: #000;
@@ -282,49 +269,92 @@ form input {
     text-align: right;
 }
 
+.container-bottom .like {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.container-bottom .like img {
+    width: 21px;
+    height: 24px;
+    filter: brightness(0);
+}
+
 /* ============================================= */
 
 #contact_modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: none;
+    align-items: start;
+    justify-content: center;
+    top: 0%;
+    left: 0%;
     width: 100%;
     height: 100%;
     background: #fff;
+    padding: 62px 0;
+    z-index: 10;
 }
 
 .modal {
-    margin-top: 30px;
-    max-width: 599px;
-    height: max-content;
-    padding: 15px 35px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    width: 669px;
+    height: 100%;
+    max-height: 900px;
+    padding: 15px 20px;
+    background-color: #DB8876;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 #contact_modal .modal header {
-    margin: 15px 0;
+    display: flex;
+    align-items: start;
+    width: 100%;
+    height: fit-content;
 }
 
 #contact_modal .modal h2 {
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 83.33px;
     text-align: left;
+    text-wrap: balance;
+    padding-left: 15px;
+}
+
+#contact_modal .modal .btn-close {
+    padding-top: 5px;
+}
+
+#contact_modal .modal .input {
+    margin: 0 15px;
 }
 
 #contact_modal .modal .input label {
-    font-size: 20px;
-    color: white;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 47px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #312E2E;
 }
 
 #contact_modal .modal .input input {
     border-radius: 5px;
     background: #FFF;
-    max-height: 46px;
+    width: calc(100% - 30px);
+    height: 68px;
 }
 
 #contact_modal .modal textarea {
-    width: 100%;
-    max-height: 120px;
+    width: calc(100% - 30px);
+    height: 170px;
     flex-shrink: 0;
     border-radius: 5px;
     background: #FFF;
@@ -332,6 +362,8 @@ form input {
 
 #contact_modal .modal .contact_button {
     padding: 10px 25px;
+    margin-top: 26px;
+    margin-left: 15px;
 }
 
 .modal button {
@@ -447,4 +479,44 @@ form input {
 
 .no-scroll {
     overflow: hidden;
+}
+
+@media (height < 1024px) {
+    #contact_modal {
+        padding: 32px 0;
+    }
+
+    .modal {
+        height: calc(100% - 64px);
+    }
+
+    #contact_modal .modal header {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        height: fit-content;
+    }
+
+    #contact_modal .modal h2 {
+        font-size: 46px;
+        line-height: 1em;
+    }
+
+    #contact_modal .modal .input label {
+        font-size: 28px;
+    }
+
+    #contact_modal .modal .input input {
+        height: 48px;
+    }
+
+    #contact_modal .modal textarea {
+        height: 120px;
+    }
+
+    .btn-close img {
+        width: 32px;
+        height: 32px;
+    }
+
 }
