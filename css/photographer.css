@@ -259,6 +259,7 @@ form input {
     background: #DB8876;
     border-radius: 5px;
     padding: 21px 31px;
+    z-index: 2;
 }
 
 .container-bottom b,
@@ -270,12 +271,13 @@ form input {
     line-height: 31px;
     letter-spacing: 0em;
     text-align: right;
+    cursor: default;
+    user-select: none;
 }
 
 .container-bottom .like {
     display: inline-flex;
     align-items: center;
-    cursor: pointer;
     user-select: none;
 }
 
@@ -353,6 +355,9 @@ form input {
     background: #FFF;
     width: calc(100% - 30px);
     height: 68px;
+    font-size: 24px;
+    padding: 5px 15px;
+    box-sizing: border-box;
 }
 
 #contact_modal .modal textarea {
@@ -361,6 +366,9 @@ form input {
     flex-shrink: 0;
     border-radius: 5px;
     background: #FFF;
+    font-size: 24px;
+    padding: 5px 15px;
+    box-sizing: border-box;
 }
 
 #contact_modal .modal .contact_button {
@@ -406,6 +414,7 @@ form input {
     margin: 0;
     padding: 64px;
     box-sizing: border-box;
+    z-index: 10;
 }
 
 .container-carousel {
@@ -501,7 +510,7 @@ form input {
     overflow: hidden;
 }
 
-@media (height < 1024px) {
+@media (height < 980px) {
     #contact_modal {
         padding: 32px 0;
     }
