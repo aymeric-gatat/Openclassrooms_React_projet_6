@@ -40,13 +40,15 @@
       <ul class="gallery" role="region" aria-label="Galerie d'images"></ul>
 
       <div class="modal-carousel" role="dialog" tabindex="-1" aria-hidden="true">
-        <!-- Utilisation de la balise <button> pour améliorer la sémantique -->
         <button class="close-btn" aria-label="Fermer">X</button>
-        <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
-        <button id="prev" aria-label="Image précédente" class="btn-carousel">&lt;</button>
-        <figure class="container-carousel" role="region" aria-label="Carrousel d'images"></figure>
-        <!-- Utilisation de la balise <span> pour améliorer la sémantique -->
-        <button id="next" aria-label="Image suivante" class="btn-carousel">&gt;</button>
+        <button id="prev" aria-label="Image précédente" class="btn-carousel">
+          <img src="./assets/icons/arrow_diapo.png" alt="fleche de direction diaporama">
+        </button>
+        <figure class="container-carousel" role="region" aria-label="Carrousel d'images">
+        </figure>
+        <button id="next" aria-label="Image suivante" class="btn-carousel">
+          <img src="./assets/icons/arrow_diapo.png" alt="fleche de direction diaporama">
+        </button>
       </div>
     </div>
   </main>
