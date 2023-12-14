@@ -269,7 +269,7 @@ function getMedia(data) {
           const likeParse = media;
 
           const heartFooter = document.createElement("img");
-          heartFooter.src = "../assets/icons/heart.png";
+          heartFooter.src = "assets/icons/heart.png";
           heartFooter.setAttribute("alt", "likes");
           like.appendChild(heartFooter);
 
