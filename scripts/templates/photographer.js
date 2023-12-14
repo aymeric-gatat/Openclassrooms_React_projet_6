@@ -8,7 +8,7 @@ function photographerTemplate(data, index) {
     const article = document.createElement("li");
     const link = document.createElement("a");
     link.setAttribute("tabindex", index);
-    link.href = "/photographer.html?id=" + id;
+    link.href = "photographer.html?id=" + id;
     const container = document.createElement("footer");
     //Image
     const imgContainer = document.createElement("picture");
