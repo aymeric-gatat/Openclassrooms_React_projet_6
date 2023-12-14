@@ -27,15 +27,17 @@
     </header>
 
     <div class="gallery-section" role="region" aria-label="Galerie d'images">
-      <div class="sort">
-        <!-- Utilisation de la balise <label> pour lier l'étiquette au menu déroulant -->
-        <label for="sort-btn">Trier par :</label>
-        <select name="sort" id="sort-btn" aria-label="Options de tri">
-          <option value="popularité">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
+      <!---->
+      <div class="custom-select sort" id="customSelect">
+        <p>Trier par :</p>
+        <p class="select-header" id="selectHeader" tabindex="0">Popularité</p>
+        <ul class="select-options" id="selectOptions">
+          <li class="select-option" data-value="popularite">Popularité</li>
+          <li class="select-option" data-value="date">Date</li>
+          <li class="select-option" data-value="title">Titre</li>
+        </ul>
       </div>
+      <!---->
 
       <ul class="gallery" role="region" aria-label="Galerie d'images"></ul>
 

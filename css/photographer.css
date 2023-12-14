@@ -131,51 +131,6 @@ form input {
     padding: 20px 100px;
 }
 
-.gallery-section .sort {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: start;
-    gap: 25px;
-}
-
-.gallery-section .sort label,
-.gallery-section .sort #sort-btn {
-    font-family: DM Sans;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 23px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #000;
-}
-
-.gallery-section .sort #sort-btn {
-    position: relative;
-    background-color: #901C1C;
-    color: #fff;
-    height: 56px;
-    border-radius: 2px;
-    border: none;
-    outline: none;
-    padding: 0px 23px;
-}
-
-.gallery-section .sort #sort-btn::backdrop {
-    background-color: yellow;
-}
-
-.gallery-section .sort #sort-btn option {
-    outline: none;
-    padding: 20px 23px;
-    border-radius: 0;
-    border-bottom: 2px solid #fff;
-}
-
-.gallery-section .sort #sort-btn option:last-child {
-    border-bottom: none;
-}
-
 .gallery-section .gallery {
     display: flex;
     flex-flow: row wrap;
@@ -549,3 +504,74 @@ form input {
     }
 
 }
+
+/**/
+.custom-select {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+
+}
+
+.custom-select p {
+    font-family: DM Sans;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+    margin-right: 35px;
+}
+
+.select-header {
+    padding: 10px;
+    cursor: pointer;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff !important;
+    padding: 23px 20px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    max-width: 170px;
+}
+
+.select-options {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 113px;
+    width: 100%;
+    max-width: 170px;
+    padding: 0px 20px;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff !important;
+    background-color: #901C1C;
+    border-radius: 5px;
+}
+
+.select-option {
+    padding: 23px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.select-option:last-child {
+    border-bottom: none;
+}
+
+/**/

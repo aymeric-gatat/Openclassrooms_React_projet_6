@@ -353,12 +353,56 @@ function getMedia(data) {
     sortByLike(dataMedia);
     createGallery(dataMedia);
 
-    sortBtn.addEventListener("change", () => {
-      const value = sortBtn.value;
-      const result = [...dataMedia];
-      sortAction(value, result);
-      removeGallery(gallery);
-      createGallery(result);
+    const selectHeader = document.getElementById("selectHeader");
+    const selectOptions = document.getElementById("selectOptions");
+
+    selectHeader.addEventListener("click", function () {
+      selectOptions.style.display = selectOptions.style.display === "block" ? "none" : "block";
+    });
+    //
+    selectHeader.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        selectOptions.style.display = selectOptions.style.display === "block" ? "none" : "block";
+        const selectOptionsArray = Array.from(selectOptions.children); // Convertir en tableau
+        selectOptionsArray.forEach((child, index) => {
+          // Ajouter un attribut tabindex à chaque enfant
+          child.tabIndex = 2;
+        });
+
+        if (selectOptionsArray.length > 0) {
+          // Mettre le focus sur le premier enfant de selectOptions
+          selectOptionsArray[0].focus();
+        }
+      }
+    });
+
+    const selectOptionElements = document.querySelectorAll(".select-option");
+
+    selectOptionElements.forEach(function (option) {
+      option.addEventListener("click", function () {
+        const selectedValue = option.getAttribute("data-value");
+        selectHeader.textContent = option.textContent;
+        selectOptions.style.display = "none";
+        const value = selectedValue;
+        const result = [...dataMedia];
+        sortAction(value, result);
+        removeGallery(gallery);
+        createGallery(result);
+      });
+      option.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          const selectedValue = option.getAttribute("data-value");
+          option.setAttribute("tabindex", "0");
+          selectHeader.focus();
+          selectHeader.textContent = option.textContent;
+          selectOptions.style.display = "none";
+          const value = selectedValue;
+          const result = [...dataMedia];
+          sortAction(value, result);
+          removeGallery(gallery);
+          createGallery(result);
+        }
+      });
     });
 
     const price = document.createElement("b");

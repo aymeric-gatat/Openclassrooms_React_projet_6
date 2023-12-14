@@ -49,14 +49,26 @@
 
 <body>
 
-    <div class="custom-select" id="customSelect">
+    <!--<div class="custom-select" id="customSelect">
         <div class="select-header" id="selectHeader">Sélectionnez une option</div>
         <div class="select-options" id="selectOptions">
             <div class="select-option" data-value="option1">Option 1</div>
             <div class="select-option" data-value="option2">Option 2</div>
             <div class="select-option" data-value="option3">Option 3</div>
         </div>
+    </div>-->
+
+    <!-- Ajout de la balise div personnalisée pour le tri -->
+    <div class="custom-select" id="customSelect">
+        <div class="select-header" id="selectHeader">Trier par :</div>
+        <div class="select-options" id="selectOptions">
+            <div class="select-option" data-value="popularite">Popularité</div>
+            <div class="select-option" data-value="date">Date</div>
+            <div class="select-option" data-value="title">Titre</div>
+        </div>
     </div>
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -74,11 +86,37 @@
                     const selectedValue = option.getAttribute('data-value');
                     selectHeader.textContent = option.textContent;
                     selectOptions.style.display = 'none';
+
                     // Faire quelque chose avec la valeur sélectionnée, par exemple :
-                    console.log('Option sélectionnée:', selectedValue);
+                    // Remplacer la logique suivante par votre propre logique de tri
+                    const value = selectedValue; console.log(value)
+                    /* const result = [...dataMedia];
+                     sortAction(value, result);
+                     removeGallery(gallery);
+                     createGallery(result);*/
                 });
             });
+
+            // Fonction de tri (à remplacer par votre propre logique de tri)
+            function sortAction(value, data) {
+                // Logique de tri à implémenter
+            }
+
+            // Fonction pour supprimer la galerie existante
+            function removeGallery(gallery) {
+                while (gallery.firstChild) {
+                    gallery.removeChild(gallery.firstChild);
+                }
+            }
+
+            // Fonction pour créer une nouvelle galerie avec les données triées
+            function createGallery(data) {
+                const gallery = document.querySelector('.gallery');
+                // Logique pour créer la galerie avec les données triées
+            }
         });
+
+
 
     </script>
 </body>
