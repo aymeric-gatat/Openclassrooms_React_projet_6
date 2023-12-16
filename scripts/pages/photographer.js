@@ -7,7 +7,7 @@ const url = "https://aymeric-gatat.github.io/Openclassrooms_React_projet_6/";
 // Sélection des éléments du DOM
 const section = document.querySelector(".photograph-header");
 const contactBtn = document.querySelector(".contact_button");
-const sortBtn = document.querySelector("#sort-btn");
+const sortBtn = document.querySelector("#selectHeader");
 const photographeUrl = url + "data/photographers.json";
 const nameModalContact = document.querySelector("#name-contact");
 
