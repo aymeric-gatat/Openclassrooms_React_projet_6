@@ -25,7 +25,7 @@ const likes = document.createElement("figure");
 likes.classList.add("footer-add");
 let likesNumber = document.createElement("p");
 const heart = document.createElement("img");
-heart.src = "../assets/icons/heart.png";
+heart.src = "assets/icons/heart.png";
 heart.setAttribute("alt", "likes");
 // Variable pour compter les images dans la galerie
 let imageIndex = 0;
