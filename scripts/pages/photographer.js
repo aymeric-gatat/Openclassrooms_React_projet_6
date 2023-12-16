@@ -358,11 +358,13 @@ function getMedia(data) {
 
     selectHeader.addEventListener("click", function () {
       selectOptions.style.display = selectOptions.style.display === "block" ? "none" : "block";
+      selectHeader.classList.add("open");
     });
     //
     selectHeader.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         selectOptions.style.display = selectOptions.style.display === "block" ? "none" : "block";
+
         const selectOptionsArray = Array.from(selectOptions.children); // Convertir en tableau
         selectOptionsArray.forEach((child, index) => {
           // Ajouter un attribut tabindex à chaque enfant
@@ -382,6 +384,10 @@ function getMedia(data) {
       option.addEventListener("click", function () {
         const selectedValue = option.getAttribute("data-value");
         selectHeader.textContent = option.textContent;
+        const span = document.createElement("span");
+        span.innerText = ">";
+        selectHeader.appendChild(span);
+        selectHeader.classList.remove("open");
         selectOptions.style.display = "none";
         const value = selectedValue;
         const result = [...dataMedia];
@@ -395,6 +401,9 @@ function getMedia(data) {
           option.setAttribute("tabindex", "0");
           selectHeader.focus();
           selectHeader.textContent = option.textContent;
+          const span = document.createElement("span");
+          span.innerText = ">";
+          selectHeader.appendChild(span);
           selectOptions.style.display = "none";
           const value = selectedValue;
           const result = [...dataMedia];

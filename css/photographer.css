@@ -118,7 +118,8 @@ form input {
     margin: 19px 0;
 }
 
-.photograph-header .contact_button:hover {
+.photograph-header .contact_button:hover,
+.photograph-header .contact_button:focus {
     color: #000;
     background: #DB8876;
 }
@@ -284,7 +285,6 @@ form input {
     font-weight: 400;
     line-height: 83.33px;
     text-align: left;
-    text-wrap: balance;
     padding-left: 15px;
 }
 
@@ -528,6 +528,7 @@ form input {
 }
 
 .select-header {
+    position: relative;
     padding: 10px;
     cursor: pointer;
     font-family: DM Sans;
@@ -562,6 +563,7 @@ form input {
     color: #fff !important;
     background-color: #901C1C;
     border-radius: 5px;
+    z-index: 1;
 }
 
 .select-option {
@@ -572,6 +574,19 @@ form input {
 
 .select-option:last-child {
     border-bottom: none;
+}
+
+.select-header span {
+    position: absolute;
+    font-size: 36px;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%) rotate(90deg);
+    z-index: 2;
+}
+
+.open span {
+    transform: translateY(-50%) rotate(-90deg);
 }
 
 /**/
